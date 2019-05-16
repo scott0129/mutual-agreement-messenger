@@ -18,31 +18,31 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 public class MessageController {
 
-    private SimpMessagingTemplate template;
+	private SimpMessagingTemplate template;
 
-    @Autowired
-    public MessageController(SimpMessagingTemplate template) {
-        this.template = template;
-    }
+	@Autowired
+	public MessageController(SimpMessagingTemplate template) {
+		this.template = template;
+	}
 
-    @MessageMapping("/room/{roomNum}/host")
-    public Response clientMessage(@DestinationVariable String roomNum, Message message) {
-        this.template.convertAndSend("/topic/greetings", "testing purposes");
-        return new Response("Hello, !!!");
-    }
+	@MessageMapping("/room/{roomNum}/host")
+	public Response clientMessage(@DestinationVariable String roomNum, Message message) {
+		this.template.convertAndSend("/topic/greetings", "testing purposes");
+		return new Response("Hello, !!!");
+	}
 
-    @MessageMapping("/room/{roomNum}/client")
-    public Response hostMessage(@DestinationVariable String roomNum, Message message) {
-        this.template.convertAndSend("/topic/greetings", "testing purposes");
-        return new Response("Hello, !!!");
-    }
-/*
-    @Scheduled(fixedRate = 2000)
-    public void repeat_greeting() {
-        System.out.println("scheduled");
-        this.template.convertAndSend("/topic/greetings", new Message("Hello"));
-    }
-		*/
+	@MessageMapping("/room/{roomNum}/client")
+	public Response hostMessage(@DestinationVariable String roomNum, Message message) {
+		this.template.convertAndSend("/topic/greetings", "testing purposes");
+		return new Response("Hello, !!!");
+	}
+	/*
+		 @Scheduled(fixedRate = 2000)
+		 public void repeat_greeting() {
+		 System.out.println("scheduled");
+		 this.template.convertAndSend("/topic/greetings", new Message("Hello"));
+		 }
+		 */
 
 }
 

@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Mutual Messenger</title>
-				<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-				<link href="/style.css" rel="stylesheet">
-				<script src="/webjars/jquery/jquery.min.js"></script>
-				<script src="/webjars/sockjs-client/sockjs.min.js"></script>
-				<script src="/webjars/stomp-websocket/stomp.min.js"></script>
-				<script src="/app.js"></script>
-				</head>
-    <body>
-        <button id="connectButton" class="btn btn-default">Connect</button>
-    </body>
+<html xmlns:th="http://www.thymeleaf.org" >
+	<head>
+		<title>Mutual Messenger</title>
+		<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/style.css" rel="stylesheet">
+		<script src="/webjars/jquery/jquery.min.js"></script>
+		<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+		<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+		<script src="/app.js"></script>
+
+	</head>
+	<body>
+		<form action="#" th:object="${roomRequestJavaObject}" th:action="@{/requestRoom}" method="post">
+			<table border="1">
+				<tr>
+					<td>RoomName:</td>
+					<td><input type="text" th:field="*{roomName}" /></td>
+				</tr>
+				<tr>
+					<td>YourName:</td>
+					<td><input type="text" th:field="*{hostName}" /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Submit" /></td>
+				</tr>
+			</table>
+		</form>
+		<!--
+		<button id="connectButton" class="btn btn-default">Connect</button>
+		-->
+	</body>
 </html>
