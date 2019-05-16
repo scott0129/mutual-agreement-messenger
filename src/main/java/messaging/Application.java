@@ -1,9 +1,11 @@
 package messaging;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.task.TaskExecutor;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @SpringBootApplication
 public class Application {
 
+	@Autowired
+	RoomManagementService roomService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -29,11 +34,21 @@ public class Application {
     return "index";
   }
 
-	@PostMapping("/requestRoom")
+	@RequestMapping("/requestRoom")
 	String requestRoom(@ModelAttribute RoomRequest roomRequest, BindingResult errors, Model model) {
 		System.out.println("I got the room request! for name:" + roomRequest.getHostName());
+		int roomNumber = roomService.makeRoom();
 
-		return index(model);
+		return "redirect:room/" + roomNumber + "/host";
+	}
+
+	@RequestMapping("/room/{roomNum}/host")
+	String roomHost(@PathVariable String roomNum, Message message) {
+		if (!roomService.roomExists(Integer.parseInt(roomNum))) {
+			return "no_room_found";
+		}
+
+		return "room";
 	}
 
 	@RequestMapping("/redirect")

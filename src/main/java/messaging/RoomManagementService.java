@@ -22,5 +22,9 @@ public class RoomManagementService {
 		int idx = Integer.parseInt(roomNum);
 		return rooms.get(idx);
 	}
+
+	public boolean roomExists(int roomNum) {
+		return 0 <= roomNum && roomNum < rooms.size(); 
+	}
 	
 }
