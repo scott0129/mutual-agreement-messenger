@@ -36,17 +36,46 @@ public class Application {
 
 	@RequestMapping("/requestRoom")
 	String requestRoom(@ModelAttribute RoomRequest roomRequest, BindingResult errors, Model model) {
-		System.out.println("I got the room request! for name:" + roomRequest.getHostName());
-		int roomNumber = roomService.makeRoom();
+		int roomNumber = roomService.makeRoom(roomRequest.getRoomName(), roomRequest.getHostName());
 
 		return "redirect:room/" + roomNumber + "/host";
 	}
 
 	@RequestMapping("/room/{roomNum}/host")
-	String roomHost(@PathVariable String roomNum, Message message) {
+	String roomHost(@PathVariable String roomNum, Model model) {
+		if (roomNum.equals("-1")) {
+			RoomState room = new RoomState("testingRoom", "testingHost");
+			model.addAttribute("roomName", "testingRoom");
+			model.addAttribute("hostName", "testingHost");
+			model.addAttribute("roomNumber", roomNum); 
+			return "host_room";
+		}
+
 		if (!roomService.roomExists(Integer.parseInt(roomNum))) {
 			return "no_room_found";
 		}
+		RoomState room = roomService.getRoomState(roomNum);
+
+    model.addAttribute("roomJavaObj", room);
+
+		return "host_room";
+	}
+
+	@RequestMapping("/room/{roomNum}/client")
+	String roomClient(@PathVariable String roomNum, Model model) {
+		if (roomNum.equals("-1")) {
+			RoomState room = new RoomState("testingRoom", "testingHost");
+			model.addAttribute("roomName", "testingRoom");
+			model.addAttribute("hostName", "testingHost");
+			return "room";
+		}
+
+		if (!roomService.roomExists(Integer.parseInt(roomNum))) {
+			return "no_room_found";
+		}
+		RoomState room = roomService.getRoomState(roomNum);
+
+    model.addAttribute("roomJavaObj", room);
 
 		return "room";
 	}

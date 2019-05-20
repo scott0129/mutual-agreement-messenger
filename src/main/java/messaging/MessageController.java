@@ -25,9 +25,9 @@ public class MessageController {
 		this.template = template;
 	}
 
-	@MessageMapping("/room/{roomNum}/client")
+	@MessageMapping("/rooms/{roomNum}/client")
 	public Response hostMessage(@DestinationVariable String roomNum, Message message) {
-		this.template.convertAndSend("/topic/greetings", "testing purposes");
+		this.template.convertAndSend("/user-responses/rooms/" + Integer.parseInt(roomNum), "testing purposes");
 		return new Response("Hello, !!!");
 	}
 	/*

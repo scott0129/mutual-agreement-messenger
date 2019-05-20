@@ -13,8 +13,8 @@ public class RoomManagementService {
 		rooms = new ArrayList<RoomState>(0);
 	}
 
-	public int makeRoom() {
-		rooms.add(new RoomState());
+	public int makeRoom(String roomName, String hostName) {
+		rooms.add(new RoomState(roomName, hostName));
 		return rooms.size() - 1;
 	}
 
