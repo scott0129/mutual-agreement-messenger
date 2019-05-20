@@ -2,17 +2,26 @@ package messaging;
 
 public class Response {
 
-	private String content;
+	private boolean hostResponded;
+	private boolean clientResponded;
+	private boolean result;
 
-	public Response() {
+	public Response(boolean hostResponded, boolean clientResponded, boolean hostResponse) {
+		this.hostResponded = hostResponded;
+		this.clientResponded = clientResponded;
+		this.result = result;
 	}
 
-	public Response(String content) {
-		this.content = content;
+	public boolean getHostResponded() {
+		return hostResponded;
 	}
 
-	public String getContent() {
-		return content;
+	public boolean getClientResponded() {
+		return clientResponded;
+	}
+
+	public boolean getResult() {
+		return result;
 	}
 
 }

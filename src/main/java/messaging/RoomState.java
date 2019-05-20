@@ -37,12 +37,12 @@ public class RoomState {
 		result = response && result;
 	}
 
-	public boolean resultReady() {
-		return hostResponded && clientResponded;
+	public String getRoomName() {
+		return roomName;
 	}
 
-	public boolean getResult() {
-		return result;
+	public boolean resultReady() {
+		return hostResponded && clientResponded;
 	}
 
 	public String getHostName() {
@@ -52,5 +52,18 @@ public class RoomState {
 	public String getClientName() {
 		return clientName;
 	}
+
+	public boolean getHostResponded() {
+		return hostResponded;
+	}
+
+	public boolean getClientResponded() {
+		return clientResponded;
+	}
+
+	public boolean getResult() {
+		return result;
+	}
+
 
 }
