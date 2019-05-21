@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+	<head>
+		<title>Mutual Messenger Host</title>
+		<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="/style.css">
+
+		<script src="/webjars/jquery/jquery.min.js"></script>
+		<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+		<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+			let roomNumber = /*[[${roomNumber}]]*/ 'ERROR';
+			/*]]>*/
+
+			let roomType = 'client';
+		</script>
+		<script src="/rooms.js"></script>
+
+	</head>
+	<body>
+		<table border="1">
+			<tr>
+				<td th:text="${roomName}"/>
+			</tr>
+			<tr>
+				<td th:text="${hostName}"/>
+			</tr>
+		</table>
+		<div>
+			<button id="connectButton" class="btn btn-default">Connect</button>
+			<button id="disconnectButton" class="btn btn-default">Disconnect</button>
+		</div>
+
+		<div>
+			<button id="yesButton" class="btn btn-default">Yes</button>
+			<button id="noButton" class="btn btn-default">No</button>
+		</div>
+
+
+	</body>
+</html>

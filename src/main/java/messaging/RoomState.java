@@ -11,8 +11,9 @@ public class RoomState {
 	private boolean result = true;
 
 	public RoomState(String roomName, String hostName) {
-		setRoomName(roomName);
-		setHostName(hostName);
+		this.roomName = roomName;
+		this.hostName = hostName;
+		this.result = true;
 	}
 	
 	public void setRoomName(String roomName) {

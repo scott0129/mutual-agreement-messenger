@@ -6,7 +6,7 @@ public class Response {
 	private boolean clientResponded;
 	private boolean result;
 
-	public Response(boolean hostResponded, boolean clientResponded, boolean hostResponse) {
+	public Response(boolean hostResponded, boolean clientResponded, boolean result) {
 		this.hostResponded = hostResponded;
 		this.clientResponded = clientResponded;
 		this.result = result;
