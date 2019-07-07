@@ -1,9 +1,29 @@
-canvas {
-    display: block;
-    margin: auto;
-    border: 1px solid black;
+#pageTitle {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 3em; 
+    text-align: center;
+}
+
+#roomName {
+    margin: 10px;
+    text-align: center;
+}
+
+#label {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-weight: bold;
+}
+
+#information {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#spacer {
+  flex: 1;
 }
 
 .btn {
-    margin-top: 10px;
+    margin: 50px; 20px;
 }

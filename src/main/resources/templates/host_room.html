@@ -3,7 +3,7 @@
 	<head>
 		<title>Mutual Messenger Host</title>
 		<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="/style.css">
+		<link rel="stylesheet" href="../static/style.css">
 
 		<script src="/webjars/jquery/jquery.min.js"></script>
 		<script src="/webjars/sockjs-client/sockjs.min.js"></script>
@@ -15,18 +15,25 @@
 
 			let roomType = 'host';
 		</script>
-		<script src="/rooms.js"></script>
+        <script src="/rooms.js"></script>
 
-	</head>
-	<body>
-		<table border="1">
-			<tr>
-				<td th:text="${roomName}"/>
-			</tr>
-			<tr>
-				<td th:text="${hostName}"/>
-			</tr>
-		</table>
+    </head>
+    <body>
+        <div id="pageTitle">Mutual Messenger</div>
+        <div id="roomName">
+            <span id="label">Room Name:</span>
+            <span th:text="${roomName}"> defaultRoomName </span>
+        </div>
+        <div id="information">
+            <table border="1">
+                <tr>
+                    <td>Partner Status:</td><td th:text="${roomName}">partnerOnline</td>
+                </tr>
+                <tr>
+                    <td>Partner Status:</td><td th:text="${hostName}">partnerResponded</td>
+                </tr>
+            </table>
+        </div>
 		<div>
 			<button id="connectButton" class="btn btn-default">Connect</button>
 			<button id="disconnectButton" class="btn btn-default">Disconnect</button>
