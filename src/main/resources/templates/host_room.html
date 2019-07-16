@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" >
 	<head>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans|Patua+One|Quicksand&display=swap" rel="stylesheet">
+
 		<title>Mutual Messenger Host</title>
 		<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="../static/style.css">
@@ -19,29 +21,36 @@
 
     </head>
     <body>
-        <div id="pageTitle">Mutual Messenger</div>
+        <div class="flex-box">
+            <div id="pageTitle">Mutual Messenger</div>
+        </div>
         <div id="roomName">
             <span id="label">Room Name:</span>
             <span th:text="${roomName}"> defaultRoomName </span>
         </div>
-        <div id="information">
-            <table border="1">
+        <div class="flex-box">
+            <table class="info-table" border="1">
                 <tr>
-                    <td>Partner Status:</td><td th:text="${roomName}">partnerOnline</td>
+                    <td>Partner Status:</td><td id='partner-status' th:text="${roomName}">partnerOnline</td>
                 </tr>
+            </table>
+            <table class="info-table" border="1">
                 <tr>
-                    <td>Partner Status:</td><td th:text="${hostName}">partnerResponded</td>
+                    <td>Your Status:</td><td th:text="${roomName}">youConnected</td>
                 </tr>
             </table>
         </div>
-		<div>
-			<button id="connectButton" class="btn btn-default">Connect</button>
-			<button id="disconnectButton" class="btn btn-default">Disconnect</button>
-		</div>
-
-		<div>
-			<button id="yesButton" class="btn btn-default">Yes</button>
-			<button id="noButton" class="btn btn-default">No</button>
+        <div class='flex-box' id='response-status'>
+            <tr>
+                <td></td><td th:text="${hostName}">partnerResponded</td>
+            </tr>
+            <tr>
+                <td></td><td th:text="${hostName}">youResponded</td>
+            </tr>
+        </div>
+		<div class="flex-box">
+			<button id="yes-btn" class="btn btn-default">Yes</button>
+			<button id="no-btn" class="btn btn-default">No</button>
 		</div>
 
 

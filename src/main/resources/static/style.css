@@ -1,11 +1,20 @@
+body {
+    background: #E3DDDC;
+    font-family: "Quicksand", "helvetica Neue", sans-serif;
+    color: #3D2B3D;
+}
+
 #pageTitle {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-family: "Patua One", "Helvetica Neue", sans-serif;
     font-size: 3em; 
     text-align: center;
+    /* background: #D0F4EA; */
+    width: 10em;
+    padding: 0.2em;
 }
 
 #roomName {
-    margin: 10px;
+    margin: 10px 10px 40px;
     text-align: center;
 }
 
@@ -14,16 +23,69 @@
     font-weight: bold;
 }
 
-#information {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+.info-table{
+    border-collapse: collapse;
+    background: #F7F0F0;
+    border-radius: 0.5em;
+    border: 3px solid #635D5C;
+    border-collapse:separate;
+    border-radius:6px;
+    border-radius:6px;
 }
 
-#spacer {
+#response-status {
+    margin: 3em
+}
+
+#partner-status {
+    color: #47CC04;
+    font-weight: bold;
+}
+
+.info-table td {
+    border: none;
+    height: 2em;
+    width: 10em;
+}
+
+td:hover {background-color: #f5f5f5;}
+
+
+.spacer {
   flex: 1;
 }
 
+.flex-box {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
 .btn {
-    margin: 50px; 20px;
+    margin:
+    border: none;
+    border-radius: 1em;
+    padding: 1em 2em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    opacity: 0.9;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    opacity: 1;
+    border-radius: 0.5em;
+    color: #000; /* Fallback for older browsers */
+}
+
+#yes-btn {
+    background-color: #A8C256;
+    color: white;
+}
+
+#no-btn {
+    background-color: #b22222;
+    color: white;
 }
